@@ -137,7 +137,7 @@ func main() {
 		User:                 os.Getenv("DBUSER"),
 		Passwd:               os.Getenv("DBPASS"),
 		Net:                  "tcp",
-		Addr:                 "127.0.0.1:3306",
+		Addr:                 os.Getenv("DBHOST"),
 		DBName:               "myapp",
 		AllowNativePasswords: true,
 	}
@@ -161,5 +161,5 @@ func main() {
 	router.PATCH("/albums/:id", updateAlbumByID)
 	router.DELETE("/albums/:id", deleteAlbumByID)
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 }
